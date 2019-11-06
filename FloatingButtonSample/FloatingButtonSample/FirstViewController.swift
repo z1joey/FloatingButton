@@ -12,9 +12,18 @@ class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        testLoadingFromXib()
     }
 
+    func testLoadingFromXib() {
+        let floatingThing = UINib(nibName: "FloatingThing", bundle: .main).instantiate(withOwner: self, options: nil).first
+        if let floatingThing = floatingThing as? FloatingThing {
+            floatingThing.frame = CGRect(x: 100, y: 66, width: 200, height: 80)
+            floatingThing.layer.cornerRadius = 40
+            view.addSubview(floatingThing)
+        }
+    }
 
 }
 

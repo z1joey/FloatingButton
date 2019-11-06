@@ -14,12 +14,6 @@ class FloatingButton: UIView {
 
     @IBOutlet weak var centralButton: UIButton!
 
-    var cornerRadius: CGFloat = 0.0 {
-        didSet {
-            contentView.layer.cornerRadius = cornerRadius
-        }
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
