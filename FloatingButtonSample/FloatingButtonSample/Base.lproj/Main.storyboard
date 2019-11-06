@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gpU-Kz-Egr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Second View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SecondViewController" customModule="FloatingButtonSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRb-zl-9au">
+                                <rect key="frame" x="107" y="382" width="200" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="nna-as-KQ8"/>
+                                    <constraint firstAttribute="height" constant="44" id="o8D-5X-g9D"/>
+                                </constraints>
+                                <state key="normal" title="BACK">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8TH-6f-BAI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XRb-zl-9au" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="D8b-vY-HdL"/>
+                            <constraint firstItem="XRb-zl-9au" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="gXg-Tq-M1W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fqc-aL-hJk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013" y="217"/>
+        </scene>
+        <!--First View Controller-->
+        <scene sceneID="YPV-me-zSQ">
+            <objects>
+                <viewController id="gpU-Kz-Egr" customClass="FirstViewController" customModule="FloatingButtonSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Sa-lp-IdF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtc-9p-C7K">
+                                <rect key="frame" x="107" y="431" width="200" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="YUF-aU-71P"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="cXd-M2-C42"/>
+                                </constraints>
+                                <state key="normal" title="NEXT SCREEN">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="fvp-zg-2ae"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjU-f6-HQt" customClass="FloatingButton" customModule="FloatingButtonSample" customModuleProvider="target">
+                                <rect key="frame" x="107" y="331" width="200" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="8fc-5T-7PE"/>
+                                    <constraint firstAttribute="height" constant="80" id="bH4-50-ef4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gtc-9p-C7K" firstAttribute="centerX" secondItem="mNh-4a-fVw" secondAttribute="centerX" id="N4m-9P-iH2"/>
+                            <constraint firstItem="Gtc-9p-C7K" firstAttribute="centerY" secondItem="mNh-4a-fVw" secondAttribute="centerY" id="Orh-0l-8rm"/>
+                            <constraint firstItem="jjU-f6-HQt" firstAttribute="centerX" secondItem="mNh-4a-fVw" secondAttribute="centerX" id="nWO-q4-l0r"/>
+                            <constraint firstItem="Gtc-9p-C7K" firstAttribute="top" secondItem="jjU-f6-HQt" secondAttribute="bottom" constant="20" id="pQT-W4-2k1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mNh-4a-fVw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ScE-nL-HTk" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60.869565217391312" y="216.96428571428569"/>
+        </scene>
+    </scenes>
+</document>
