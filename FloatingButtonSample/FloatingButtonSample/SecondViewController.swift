@@ -12,8 +12,9 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        #if DEBUG
+        Test.addViewOnWindow()
+        #endif
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {

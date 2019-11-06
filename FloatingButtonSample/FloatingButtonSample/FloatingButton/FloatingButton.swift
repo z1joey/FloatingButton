@@ -36,4 +36,8 @@ class FloatingButton: UIView {
         contentView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
 
+    @IBAction func centralButtonTapped(_ sender: UIButton) {
+        print("Tok")
+    }
+
 }
