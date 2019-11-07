@@ -10,6 +10,8 @@ import UIKit
 
 class FloatingThing: UIView {
 
+    static let defaultSize = CGSize(width: 200.0, height: 80.0)
+
     @IBOutlet weak var timeButton: UIButton!
 
     @IBAction func timeButtonTapped(_ sender: UIButton) {

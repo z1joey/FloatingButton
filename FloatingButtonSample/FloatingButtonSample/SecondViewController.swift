@@ -12,9 +12,10 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        #if DEBUG
-        Test.addViewOnWindow()
-        #endif
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.floating()
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {

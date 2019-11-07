@@ -10,30 +10,24 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    @IBOutlet var floatThingView: UIView!
+    var isFloatingButtonHidden: Bool = true {
+        didSet {
+            switch isFloatingButtonHidden {
+            case true:
+                print("True")
+            case false:
+                print("False")
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        #if DEBUG
-        Test.loadFromNib(onView: self.view)
-        #endif
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        floatThingView.frame = CGRect(x: 24, y: 24, width: 200, height: 80)
-        view.addSubview(floatThingView)
-    }
-
-    @IBAction func wasDragged(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: self.view)
-        if sender.state == UIGestureRecognizer.State.began || sender.state == UIGestureRecognizer.State.changed {
-            if let view = sender.view {
-                view.center = CGPoint(x:view.center.x + translation.x,
-                y:view.center.y + translation.y)
-            }
-            sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
-        }
+        print("touched")
     }
 
 }

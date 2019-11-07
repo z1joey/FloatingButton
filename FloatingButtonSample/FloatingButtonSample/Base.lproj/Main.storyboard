@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.30158390410958902" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XRb-zl-9au" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="D8b-vY-HdL"/>
                             <constraint firstItem="XRb-zl-9au" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="gXg-Tq-M1W"/>
@@ -66,97 +66,17 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="fvp-zg-2ae"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuL-db-vzh" userLabel="Test added by IB" customClass="FloatingButton" customModule="FloatingButtonSample" customModuleProvider="target">
-                                <rect key="frame" x="87" y="320" width="240" height="80"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Rxu-a6-d4U"/>
-                                    <constraint firstAttribute="width" constant="240" id="hT2-Dk-eg0"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="0.29930971746575341" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Gtc-9p-C7K" firstAttribute="top" secondItem="DuL-db-vzh" secondAttribute="bottom" constant="31" id="AZE-br-27H"/>
                             <constraint firstItem="Gtc-9p-C7K" firstAttribute="centerX" secondItem="mNh-4a-fVw" secondAttribute="centerX" id="N4m-9P-iH2"/>
                             <constraint firstItem="Gtc-9p-C7K" firstAttribute="centerY" secondItem="mNh-4a-fVw" secondAttribute="centerY" id="Orh-0l-8rm"/>
-                            <constraint firstItem="DuL-db-vzh" firstAttribute="centerX" secondItem="mNh-4a-fVw" secondAttribute="centerX" id="ciS-xB-fJ7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mNh-4a-fVw"/>
                     </view>
-                    <connections>
-                        <outlet property="floatThingView" destination="5cI-g9-Oa6" id="fg3-j6-Kjs"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ScE-nL-HTk" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="5cI-g9-Oa6" customClass="FloatingThing" customModule="FloatingButtonSample" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="329" height="127"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zui-iJ-8xl" userLabel="Inside View">
-                            <rect key="frame" x="8" y="33.5" width="60" height="60"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-Kn-a8w">
-                                    <rect key="frame" x="8" y="8" width="44" height="44"/>
-                                    <color key="backgroundColor" red="0.96560269590000003" green="0.35197234150000001" blue="0.3620824218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="JWu-Kn-a8w" secondAttribute="height" multiplier="1:1" id="3Y4-sP-cHZ"/>
-                                        <constraint firstAttribute="height" constant="44" id="by0-pl-N9S"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                    <state key="normal" title="00:45">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="22"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="timeButtonTapped:" destination="5cI-g9-Oa6" eventType="touchUpInside" id="DI9-pu-4mP"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.99624770880000002" green="0.94603270289999997" blue="0.94877105949999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="zui-iJ-8xl" secondAttribute="height" multiplier="1:1" id="MHA-xo-bu2"/>
-                                <constraint firstAttribute="height" constant="60" id="WPN-EP-BMS"/>
-                                <constraint firstAttribute="width" constant="60" id="bJS-Rl-Da2"/>
-                                <constraint firstItem="JWu-Kn-a8w" firstAttribute="centerX" secondItem="zui-iJ-8xl" secondAttribute="centerX" id="eJa-Kj-I4G"/>
-                                <constraint firstItem="JWu-Kn-a8w" firstAttribute="centerY" secondItem="zui-iJ-8xl" secondAttribute="centerY" id="jW9-jh-1Pn"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="30"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <gestureRecognizers/>
-                    <constraints>
-                        <constraint firstItem="zui-iJ-8xl" firstAttribute="leading" secondItem="5cI-g9-Oa6" secondAttribute="leading" constant="8" id="9aX-d0-95D"/>
-                        <constraint firstItem="zui-iJ-8xl" firstAttribute="centerY" secondItem="5cI-g9-Oa6" secondAttribute="centerY" id="sYK-jA-snq"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="8s8-OW-LHj"/>
-                    <connections>
-                        <outlet property="timeButton" destination="JWu-Kn-a8w" id="SvH-Em-QcZ"/>
-                        <outletCollection property="gestureRecognizers" destination="4ck-EZ-Wm2" appends="YES" id="x89-Jt-kCc"/>
-                    </connections>
-                </view>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="4ck-EZ-Wm2">
-                    <connections>
-                        <action selector="wasDragged:" destination="gpU-Kz-Egr" id="4ib-VQ-2o7"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="60.869565217391312" y="216.96428571428569"/>
         </scene>
