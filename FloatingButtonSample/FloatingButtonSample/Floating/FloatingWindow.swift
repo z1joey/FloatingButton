@@ -61,7 +61,7 @@ class FloatingWindow: UIWindow {
 
 extension UIViewController {
 
-    func floating() {
+    func startFloating() {
         self.view.layer.masksToBounds = true
 
         UIView.animate(withDuration: 0.25, animations: {
@@ -69,7 +69,7 @@ extension UIViewController {
             self.view.frame = CGRect.init(origin: FloatingWindow.defaultOrigin, size: FloatingWindow.defaultSize)
             self.view.layoutIfNeeded()
         }) { _ in
-            self.navigationController?.popViewController(animated: false)
+            self.dismiss(animated: true, completion: nil)
             FloatingControl.shared.activeFloatingWindow(root: self)
         }
     }
