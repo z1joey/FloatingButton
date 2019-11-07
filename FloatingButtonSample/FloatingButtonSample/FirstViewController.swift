@@ -32,30 +32,3 @@ class FirstViewController: UIViewController {
 
 }
 
-#if DEBUG
-struct Test {
-
-    static func loadFromNib(onView view: UIView) {
-        let floatingThing = UINib(nibName: "FloatingThing", bundle: .main).instantiate(withOwner: self, options: nil).first
-        if let floatingThing = floatingThing as? FloatingThing {
-            floatingThing.frame = CGRect(x: 100, y: 66, width: 200, height: 80)
-            floatingThing.layer.cornerRadius = 40
-            view.addSubview(floatingThing)
-        }
-    }
-
-    static func addViewOnWindow() {
-        let nib = UINib(nibName: "FloatingThing", bundle: .main).instantiate(withOwner: self, options: nil).first
-        if let floatingThing = nib as? FloatingThing {
-            floatingThing.frame = CGRect(x: 24, y: 466, width: 200, height: 80)
-            floatingThing.layer.cornerRadius = 40
-
-            if let window = UIApplication.shared.keyWindow {
-                window.addSubview(floatingThing)
-            }
-        }
-    }
-
-}
-#endif
-

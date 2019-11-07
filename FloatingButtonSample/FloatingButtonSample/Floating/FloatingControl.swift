@@ -23,19 +23,15 @@ final class FloatingControl: NSObject {
 
     private var windows: [FloatingWindow] = []
 
-    lazy var floatingThing: FloatingThing = {
+    lazy var floatingThing: UIView = {
         let floatingNib = UINib(nibName: "FloatingThing", bundle: .main).instantiate(withOwner: self, options: nil).first
-        if let floatingThing = floatingNib as? FloatingThing {
+        if let floatingThing = floatingNib as? UIView {
             return floatingThing
         }
-        return FloatingThing()
+        return UIView()
     }()
 
-    func addToWindow(view: UIView) {
-        window.addSubview(view)
-    }
-
-    func activeFloatingWindow(root: UIViewController) {
+    func activeFloatingWindow(onRoot root: UIViewController) {
         let control = FloatingControl.shared
         control.windows.removeAll()
 

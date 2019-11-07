@@ -64,13 +64,13 @@ extension UIViewController {
     func startFloating() {
         self.view.layer.masksToBounds = true
 
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.view.layer.cornerRadius = FloatingWindow.defaultSize.height / 2
             self.view.frame = CGRect.init(origin: FloatingWindow.defaultOrigin, size: FloatingWindow.defaultSize)
             self.view.layoutIfNeeded()
         }) { _ in
             self.dismiss(animated: true, completion: nil)
-            FloatingControl.shared.activeFloatingWindow(root: self)
+            FloatingControl.shared.activeFloatingWindow(onRoot: self)
         }
     }
 

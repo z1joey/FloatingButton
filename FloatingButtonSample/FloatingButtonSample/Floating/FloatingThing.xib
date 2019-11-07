@@ -9,39 +9,36 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="j94-iy-721" customClass="FloatingThing" customModule="FloatingButtonSample" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="412" height="301"/>
+        <view contentMode="scaleToFill" id="j94-iy-721">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="66"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxK-Ks-20C" userLabel="Inside View">
-                    <rect key="frame" x="8" y="120.5" width="60" height="60"/>
+                    <rect key="frame" x="8" y="3" width="60" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAR-GK-upC" userLabel="Central Button">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eq-aA-thO">
                             <rect key="frame" x="8" y="8" width="44" height="44"/>
-                            <color key="backgroundColor" red="0.96560269590000003" green="0.35197234150000001" blue="0.3620824218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.94169157739999998" green="0.36025828119999997" blue="0.31993448730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="vAR-GK-upC" secondAttribute="height" multiplier="1:1" id="2oA-oh-NQt"/>
-                                <constraint firstAttribute="height" constant="44" id="Pyo-wj-szx"/>
+                                <constraint firstAttribute="width" constant="44" id="5pv-KR-Vyu"/>
+                                <constraint firstAttribute="height" constant="44" id="6hw-xD-SHe"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                            <state key="normal" title="00:45">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="22"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="timeButtonTapped:" destination="j94-iy-721" eventType="touchUpInside" id="IS6-te-MiV"/>
-                            </connections>
-                        </button>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.99624770880000002" green="0.94603270289999997" blue="0.94877105949999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="vAR-GK-upC" firstAttribute="centerY" secondItem="NxK-Ks-20C" secondAttribute="centerY" id="9Pj-sC-NS9"/>
+                        <constraint firstItem="9eq-aA-thO" firstAttribute="centerX" secondItem="NxK-Ks-20C" secondAttribute="centerX" id="Akv-T9-Lfk"/>
+                        <constraint firstItem="9eq-aA-thO" firstAttribute="centerY" secondItem="NxK-Ks-20C" secondAttribute="centerY" id="P7n-ST-RMZ"/>
                         <constraint firstAttribute="width" secondItem="NxK-Ks-20C" secondAttribute="height" multiplier="1:1" id="Yzl-9w-MfF"/>
-                        <constraint firstItem="vAR-GK-upC" firstAttribute="centerX" secondItem="NxK-Ks-20C" secondAttribute="centerX" id="cMx-aq-VAb"/>
                         <constraint firstAttribute="height" constant="60" id="ldm-3w-Ln2"/>
                         <constraint firstAttribute="width" constant="60" id="vJL-bm-ghg"/>
                     </constraints>
@@ -59,9 +56,6 @@
                 <constraint firstItem="NxK-Ks-20C" firstAttribute="leading" secondItem="j94-iy-721" secondAttribute="leading" constant="8" id="nBh-FD-bks"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="timeButton" destination="vAR-GK-upC" id="Jca-Dh-RxS"/>
-            </connections>
             <point key="canvasLocation" x="130.43478260869566" y="227.34375"/>
         </view>
     </objects>
