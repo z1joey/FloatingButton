@@ -13,6 +13,7 @@
 		D45A46612372698800F9F8D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D45A46602372698800F9F8D8 /* Assets.xcassets */; };
 		D45A46642372698800F9F8D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45A46622372698800F9F8D8 /* LaunchScreen.storyboard */; };
 		D45A467423726DAC00F9F8D8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45A467323726DAC00F9F8D8 /* SecondViewController.swift */; };
+		D499D37223741DD1009B846D /* FloatingThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499D37123741DD1009B846D /* FloatingThing.swift */; };
 		D4AEA6672373ED3A003F8E9A /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AEA6662373ED3A003F8E9A /* FloatingWindow.swift */; };
 		D4AEA6692373F32F003F8E9A /* FloatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AEA6682373F32F003F8E9A /* FloatingControl.swift */; };
 		D4D3F5D82372AE2F00B8848E /* FloatingThing.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D3F5D72372AE2F00B8848E /* FloatingThing.xib */; };
@@ -27,6 +28,7 @@
 		D45A46632372698800F9F8D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D45A46652372698800F9F8D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D45A467323726DAC00F9F8D8 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D499D37123741DD1009B846D /* FloatingThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingThing.swift; sourceTree = "<group>"; };
 		D4AEA6662373ED3A003F8E9A /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
 		D4AEA6682373F32F003F8E9A /* FloatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingControl.swift; sourceTree = "<group>"; };
 		D4D3F5D72372AE2F00B8848E /* FloatingThing.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingThing.xib; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				D4D3F5D72372AE2F00B8848E /* FloatingThing.xib */,
+				D499D37123741DD1009B846D /* FloatingThing.swift */,
 				D4AEA6682373F32F003F8E9A /* FloatingControl.swift */,
 				D4AEA6662373ED3A003F8E9A /* FloatingWindow.swift */,
 			);
@@ -158,6 +161,7 @@
 			files = (
 				D45A467423726DAC00F9F8D8 /* SecondViewController.swift in Sources */,
 				D4AEA6672373ED3A003F8E9A /* FloatingWindow.swift in Sources */,
+				D499D37223741DD1009B846D /* FloatingThing.swift in Sources */,
 				D4AEA6692373F32F003F8E9A /* FloatingControl.swift in Sources */,
 				D45A465C2372698600F9F8D8 /* FirstViewController.swift in Sources */,
 				D45A46582372698600F9F8D8 /* AppDelegate.swift in Sources */,

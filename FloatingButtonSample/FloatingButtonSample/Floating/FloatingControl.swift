@@ -14,21 +14,14 @@ final class FloatingControl: NSObject {
 
     private override init() {}
 
-    private var window: UIWindow {
-        if let appDelegate = (UIApplication.shared.delegate) as? AppDelegate, let window = appDelegate.window {
-            return window
-        }
-        return UIWindow()
-    }
-
     private var windows: [FloatingWindow] = []
 
-    lazy var floatingThing: UIView = {
+    lazy var floatingThing: FloatingThing = {
         let floatingNib = UINib(nibName: "FloatingThing", bundle: .main).instantiate(withOwner: self, options: nil).first
-        if let floatingThing = floatingNib as? UIView {
+        if let floatingThing = floatingNib as? FloatingThing {
             return floatingThing
         }
-        return UIView()
+        return FloatingThing()
     }()
 
     func activeFloatingWindow(onRoot root: UIViewController) {

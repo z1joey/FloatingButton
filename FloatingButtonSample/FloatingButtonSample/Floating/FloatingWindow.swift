@@ -10,10 +10,10 @@ import UIKit
 
 class FloatingWindow: UIWindow {
 
-    static private let leftToMargin: CGFloat = 8
+    //static private let leftToMargin: CGFloat = 8
     
     static let defaultOrigin = CGPoint(x: 10, y: 100)
-    static let defaultSize = CGSize(width: 68 + FloatingWindow.leftToMargin, height: 68 + FloatingWindow.leftToMargin)
+    static let defaultSize = CGSize(width: 68 + FloatingThing.margin, height: 68 + FloatingThing.margin)
 
     init(root: UIViewController) {
         super.init(frame: CGRect(origin: FloatingWindow.defaultOrigin, size: FloatingWindow.defaultSize))
@@ -47,13 +47,13 @@ class FloatingWindow: UIWindow {
 }
 
 // MARK: - Gesture
-extension FloatingWindow {
+fileprivate extension FloatingWindow {
 
-    @objc fileprivate func panAction(pan: UIPanGestureRecognizer) {
+    @objc func panAction(pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: pan.view)
-        let origin = Cal.getOrigin(original: self.frame.origin, translation: translation)
+        let origin = Cal.getOrigin(original: frame.origin, translation: translation)
 
-        self.frame = CGRect(origin: origin, size: bounds.size)
+        frame = CGRect(origin: origin, size: bounds.size)
 
         if pan.state == .cancelled || pan.state == .ended || pan.state == .failed {
             transformIfNeeded()
@@ -62,12 +62,20 @@ extension FloatingWindow {
         pan.setTranslation(CGPoint.zero, in: self)
     }
 
-    @objc fileprivate func tapAction(tap: UITapGestureRecognizer) {
+    @objc func tapAction(tap: UITapGestureRecognizer) {
         print("tap")
     }
 
-    fileprivate func transformIfNeeded() {
+    func transformIfNeeded() {
+        let offset: CGFloat = 24
 
+        if frame.origin.x == Cal.minX + offset {
+            print("min")
+        }
+
+        if frame.origin.x == Cal.maxX - offset {
+            print("max")
+        }
     }
 
 }
@@ -77,7 +85,8 @@ extension FloatingWindow {
 
     struct Cal {
 
-        static let margin: CGFloat = 10
+        static var minX: CGFloat = 0
+        static var minY: CGFloat = 0
 
         static var maxX: CGFloat {
             return UIScreen.main.bounds.size.width - FloatingWindow.defaultSize.width
