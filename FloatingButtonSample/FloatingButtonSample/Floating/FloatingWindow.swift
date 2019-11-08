@@ -59,8 +59,13 @@ fileprivate extension FloatingWindow {
 
     @objc func panAction(pan: UIPanGestureRecognizer) {
         if pan.state == .began || pan.state == .changed {
+            UIView.animate(withDuration: 0.25) {
+                self.frame.size = FloatingWindow.defaultFrame.size
+                self.floatingThing.frame.origin = .zero
+            }
+
             let translation = pan.translation(in: pan.view)
-            let origin = Calculator.Window.getOrigin(originalOrigin: frame.origin, translation: translation)
+            let origin = Calculator.Window.getPanOrigin(originalOrigin: frame.origin, translation: translation)
 
             frame = CGRect(origin: origin, size: bounds.size)
         }
@@ -82,16 +87,22 @@ fileprivate extension FloatingWindow {
 
         if frame.origin.x <= minX {
             UIView.animate(withDuration: 0.25) {
+                self.frame.origin = Calculator.Window.getSidesOrigin(originalOrigin: self.frame.origin, offset: offset)
                 self.frame.size.width = FloatingWindow.atSidesWidth
+
                 self.floatingThing.frame.origin = Calculator.Thing.atRight
+
                 self.layoutIfNeeded()
             }
         }
 
         else if frame.origin.x >= maxX {
             UIView.animate(withDuration: 0.25) {
+                self.frame.origin = Calculator.Window.getSidesOrigin(originalOrigin: self.frame.origin, offset: offset)
                 self.frame.size.width = FloatingWindow.atSidesWidth
+
                 self.floatingThing.frame.origin = Calculator.Thing.atLeft
+
                 self.layoutIfNeeded()
             }
         }
@@ -117,14 +128,30 @@ extension FloatingWindow {
             static var minY: CGFloat = 0
 
             static var maxX: CGFloat {
-                return UIScreen.main.bounds.size.width - FloatingWindow.defaultFrame.width
+                return UIScreen.main.bounds.width - FloatingWindow.defaultFrame.width
             }
-
             static var maxY: CGFloat {
-                return UIScreen.main.bounds.size.height - FloatingWindow.defaultFrame.height
+                return UIScreen.main.bounds.height - FloatingWindow.defaultFrame.height
             }
 
-            static func getOrigin(originalOrigin origin: CGPoint, translation: CGPoint) -> CGPoint {
+            static func getSidesOrigin(originalOrigin origin: CGPoint, offset: CGFloat) -> CGPoint {
+                let minX = Calculator.Window.minX + offset
+                let maxX = Calculator.Window.maxX - offset
+
+                var point: CGPoint = origin
+
+                if origin.x <= minX {
+                    point.x = FloatingWindow.defaultFrame.width - FloatingWindow.atSidesWidth
+                }
+
+                if origin.x >= maxX {
+                    point.x = UIScreen.main.bounds.width - FloatingWindow.defaultFrame.width
+                }
+
+                return point
+            }
+
+            static func getPanOrigin(originalOrigin origin: CGPoint, translation: CGPoint) -> CGPoint {
                 var origin = CGPoint(x: origin.x + translation.x, y: origin.y + translation.y)
 
                 if origin.x < 0 {
