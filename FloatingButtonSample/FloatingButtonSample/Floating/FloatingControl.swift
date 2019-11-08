@@ -16,14 +16,6 @@ final class FloatingControl: NSObject {
 
     private var windows: [FloatingWindow] = []
 
-    lazy var floatingThing: FloatingThing = {
-        let floatingNib = UINib(nibName: "FloatingThing", bundle: .main).instantiate(withOwner: self, options: nil).first
-        if let floatingThing = floatingNib as? FloatingThing {
-            return floatingThing
-        }
-        return FloatingThing()
-    }()
-
     func activeFloatingWindow(onRoot root: UIViewController) {
         let control = FloatingControl.shared
         control.windows.removeAll()

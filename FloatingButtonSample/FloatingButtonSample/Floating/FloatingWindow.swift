@@ -10,15 +10,30 @@ import UIKit
 
 class FloatingWindow: UIWindow {
 
-    //static private let leftToMargin: CGFloat = 8
-    
-    static let defaultOrigin = CGPoint(x: 10, y: 100)
-    static let defaultSize = CGSize(width: 68 + FloatingThing.margin, height: 68 + FloatingThing.margin)
+    static let defaultFrame = CGRect(x: 10, y: 100, width: 68, height: 68)
+
+    static fileprivate var atSidesWidth: CGFloat = FloatingWindow.defaultFrame.width + 100
+
+    var floatingThing: UIView = UIView()
 
     init(root: UIViewController) {
-        super.init(frame: CGRect(origin: FloatingWindow.defaultOrigin, size: FloatingWindow.defaultSize))
+        super.init(frame: FloatingWindow.defaultFrame)
+
         rootViewController = root
-        backgroundColor = .clear
+        backgroundColor = .white
+        layer.cornerRadius = bounds.height / 2
+
+        let floatingNib = UINib(nibName: "FloatingThing", bundle: .main).instantiate(withOwner: self, options: nil).first
+
+        if let thing = floatingNib as? UIView {
+            floatingThing = thing
+        }
+
+        floatingThing.frame = bounds
+        floatingThing.layer.cornerRadius = FloatingWindow.defaultFrame.height / 2
+        floatingThing.layer.masksToBounds = true
+
+        addSubview(floatingThing)
     }
 
     required init?(coder: NSCoder) {
@@ -29,13 +44,6 @@ class FloatingWindow: UIWindow {
         windowLevel = UIWindow.Level.alert - 1
         screen = .main
         isHidden = false
-
-        let floatingThing = FloatingControl.shared.floatingThing
-        floatingThing.frame = bounds
-        floatingThing.layer.cornerRadius = FloatingWindow.defaultSize.height / 2
-        floatingThing.layer.masksToBounds = true
-
-        addSubview(floatingThing)
 
         let pan = UIPanGestureRecognizer.init(target: self, action: #selector(panAction(pan:)))
         self.addGestureRecognizer(pan)
@@ -50,10 +58,12 @@ class FloatingWindow: UIWindow {
 fileprivate extension FloatingWindow {
 
     @objc func panAction(pan: UIPanGestureRecognizer) {
-        let translation = pan.translation(in: pan.view)
-        let origin = Cal.getOrigin(original: frame.origin, translation: translation)
+        if pan.state == .began || pan.state == .changed {
+            let translation = pan.translation(in: pan.view)
+            let origin = Calculator.Window.getOrigin(originalOrigin: frame.origin, translation: translation)
 
-        frame = CGRect(origin: origin, size: bounds.size)
+            frame = CGRect(origin: origin, size: bounds.size)
+        }
 
         if pan.state == .cancelled || pan.state == .ended || pan.state == .failed {
             transformIfNeeded()
@@ -66,15 +76,32 @@ fileprivate extension FloatingWindow {
         print("tap")
     }
 
-    func transformIfNeeded() {
-        let offset: CGFloat = 24
+    func transformIfNeeded(offset: CGFloat = 24.0) {
+        let minX = Calculator.Window.minX + offset
+        let maxX = Calculator.Window.maxX - offset
 
-        if frame.origin.x == Cal.minX + offset {
-            print("min")
+        if frame.origin.x <= minX {
+            UIView.animate(withDuration: 0.25) {
+                self.frame.size.width = FloatingWindow.atSidesWidth
+                self.floatingThing.frame.origin = Calculator.Thing.atRight
+                self.layoutIfNeeded()
+            }
         }
 
-        if frame.origin.x == Cal.maxX - offset {
-            print("max")
+        else if frame.origin.x >= maxX {
+            UIView.animate(withDuration: 0.25) {
+                self.frame.size.width = FloatingWindow.atSidesWidth
+                self.floatingThing.frame.origin = Calculator.Thing.atLeft
+                self.layoutIfNeeded()
+            }
+        }
+
+        else {
+            UIView.animate(withDuration: 0.25) {
+                self.frame.size.width = FloatingWindow.defaultFrame.width
+                self.floatingThing.frame.origin = .zero
+                self.layoutIfNeeded()
+            }
         }
     }
 
@@ -83,39 +110,51 @@ fileprivate extension FloatingWindow {
 // MARK: - Tools
 extension FloatingWindow {
 
-    struct Cal {
+    struct Calculator {
 
-        static var minX: CGFloat = 0
-        static var minY: CGFloat = 0
+        struct Window {
+            static var minX: CGFloat = 0
+            static var minY: CGFloat = 0
 
-        static var maxX: CGFloat {
-            return UIScreen.main.bounds.size.width - FloatingWindow.defaultSize.width
+            static var maxX: CGFloat {
+                return UIScreen.main.bounds.size.width - FloatingWindow.defaultFrame.width
+            }
+
+            static var maxY: CGFloat {
+                return UIScreen.main.bounds.size.height - FloatingWindow.defaultFrame.height
+            }
+
+            static func getOrigin(originalOrigin origin: CGPoint, translation: CGPoint) -> CGPoint {
+                var origin = CGPoint(x: origin.x + translation.x, y: origin.y + translation.y)
+
+                if origin.x < 0 {
+                    origin.x = 0
+                }
+
+                if origin.x > maxX {
+                    origin.x = maxX
+                }
+
+                if origin.y < 0 {
+                    origin.y = 0
+                }
+
+                if origin.y > maxY {
+                    origin.y = maxY
+                }
+
+                return origin
+            }
         }
 
-        static var maxY: CGFloat {
-            return UIScreen.main.bounds.size.height - FloatingWindow.defaultSize.height
-        }
-
-        static func getOrigin(original: CGPoint, translation: CGPoint) -> CGPoint {
-            var origin = CGPoint(x: original.x + translation.x, y: original.y + translation.y)
-
-            if origin.x < 0 {
-                origin.x = 0
+        struct Thing {
+            static var atLeft: CGPoint {
+                return CGPoint.zero
             }
 
-            if origin.x > maxX {
-                origin.x = maxX
+            static var atRight: CGPoint {
+                return CGPoint(x: FloatingWindow.atSidesWidth - FloatingWindow.defaultFrame.width, y: 0)
             }
-
-            if origin.y < 0 {
-                origin.y = 0
-            }
-
-            if origin.y > maxY {
-                origin.y = maxY
-            }
-
-            return origin
         }
 
     }
@@ -129,8 +168,8 @@ extension UIViewController {
         self.view.layer.masksToBounds = true
 
         UIView.animate(withDuration: 0.5, animations: {
-            self.view.layer.cornerRadius = FloatingWindow.defaultSize.height / 2
-            self.view.frame = CGRect.init(origin: FloatingWindow.defaultOrigin, size: FloatingWindow.defaultSize)
+            self.view.layer.cornerRadius = FloatingWindow.defaultFrame.height / 2
+            self.view.frame = FloatingWindow.defaultFrame
             self.view.layoutIfNeeded()
         }) { _ in
             self.dismiss(animated: false, completion: nil)
