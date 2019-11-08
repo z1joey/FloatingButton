@@ -15,7 +15,6 @@
 		D45A467423726DAC00F9F8D8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45A467323726DAC00F9F8D8 /* SecondViewController.swift */; };
 		D4AEA6672373ED3A003F8E9A /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AEA6662373ED3A003F8E9A /* FloatingWindow.swift */; };
 		D4AEA6692373F32F003F8E9A /* FloatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AEA6682373F32F003F8E9A /* FloatingControl.swift */; };
-		D4D3F5D62372AE1600B8848E /* FloatingThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D3F5D52372AE1600B8848E /* FloatingThing.swift */; };
 		D4D3F5D82372AE2F00B8848E /* FloatingThing.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D3F5D72372AE2F00B8848E /* FloatingThing.xib */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		D45A467323726DAC00F9F8D8 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D4AEA6662373ED3A003F8E9A /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
 		D4AEA6682373F32F003F8E9A /* FloatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingControl.swift; sourceTree = "<group>"; };
-		D4D3F5D52372AE1600B8848E /* FloatingThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingThing.swift; sourceTree = "<group>"; };
 		D4D3F5D72372AE2F00B8848E /* FloatingThing.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingThing.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				D4D3F5D72372AE2F00B8848E /* FloatingThing.xib */,
-				D4D3F5D52372AE1600B8848E /* FloatingThing.swift */,
 				D4AEA6682373F32F003F8E9A /* FloatingControl.swift */,
 				D4AEA6662373ED3A003F8E9A /* FloatingWindow.swift */,
 			);
@@ -160,7 +157,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45A467423726DAC00F9F8D8 /* SecondViewController.swift in Sources */,
-				D4D3F5D62372AE1600B8848E /* FloatingThing.swift in Sources */,
 				D4AEA6672373ED3A003F8E9A /* FloatingWindow.swift in Sources */,
 				D4AEA6692373F32F003F8E9A /* FloatingControl.swift in Sources */,
 				D45A465C2372698600F9F8D8 /* FirstViewController.swift in Sources */,

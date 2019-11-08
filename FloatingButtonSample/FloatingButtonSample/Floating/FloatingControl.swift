@@ -14,34 +14,35 @@ final class FloatingControl: NSObject {
 
     private override init() {}
 
-    private var window: UIWindow {
-        if let appDelegate = (UIApplication.shared.delegate) as? AppDelegate, let window = appDelegate.window {
-            return window
-        }
-        return UIWindow()
-    }
+    private var window: FloatingWindow?
 
-    private var windows: [FloatingWindow] = []
-
-    lazy var floatingThing: FloatingThing = {
-        let floatingNib = UINib(nibName: "FloatingThing", bundle: .main).instantiate(withOwner: self, options: nil).first
-        if let floatingThing = floatingNib as? FloatingThing {
-            return floatingThing
-        }
-        return FloatingThing()
-    }()
-
-    func addToWindow(view: UIView) {
-        window.addSubview(view)
-    }
-
-    func activeFloatingWindow(root: UIViewController) {
+    func activeFloatingWindow(onRoot root: UIViewController) {
         let control = FloatingControl.shared
-        control.windows.removeAll()
+        control.window = nil
 
         let window = FloatingWindow(root: root)
+
         window.show()
-        control.windows.append(window)
+        control.window = window
     }
 
 }
+
+// MARK: -
+extension UIViewController {
+
+    func activeFloatingWindow() {
+        self.view.layer.masksToBounds = true
+
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layer.cornerRadius = FloatingWindow.defaultFrame.height / 2
+            self.view.frame = FloatingWindow.defaultFrame
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.dismiss(animated: false, completion: nil)
+            FloatingControl.shared.activeFloatingWindow(onRoot: self)
+        }
+    }
+
+}
+
