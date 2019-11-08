@@ -11,8 +11,7 @@ import UIKit
 class FloatingWindow: UIWindow {
 
     static let defaultFrame = CGRect(x: 10, y: 100, width: 68, height: 68)
-
-    static fileprivate var atSidesWidth: CGFloat = FloatingWindow.defaultFrame.width + 100
+    static let atSidesWidth = FloatingWindow.defaultFrame.width + 100
 
     var floatingThing: UIView = UIView()
 
@@ -188,20 +187,3 @@ extension FloatingWindow {
 
 }
 
-// MARK: -
-extension UIViewController {
-
-    func startFloating() {
-        self.view.layer.masksToBounds = true
-
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layer.cornerRadius = FloatingWindow.defaultFrame.height / 2
-            self.view.frame = FloatingWindow.defaultFrame
-            self.view.layoutIfNeeded()
-        }) { _ in
-            self.dismiss(animated: false, completion: nil)
-            FloatingControl.shared.activeFloatingWindow(onRoot: self)
-        }
-    }
-
-}

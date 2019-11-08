@@ -15,7 +15,7 @@ class SecondViewController: UIViewController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.startFloating()
+        self.activeFloatingWindow()
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
